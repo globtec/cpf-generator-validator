@@ -1,9 +1,87 @@
 ' Gambas class file
 
+Public cpf[11] As String
+
 Public Sub _new()
 
 End
 
 Public Sub Form_Open()
+  
+  Me.Center
+  
+End
 
+' Shows the generated cpf
+Public Sub btnGenerate_Click()
+  
+  txtCpf.Text = generate()
+  
+  If Not btnCopy.Enabled Then
+    btnCopy.Enabled = True
+  Endif
+  
+End
+
+' Copy Text into the Clipboard 
+Public Sub btnCopy_Click()
+  
+  Clipboard.Copy(txtCpf.Text)
+  
+End
+
+' Generating a CPF 
+Public Function generate() As String
+  
+  Dim i As Integer
+  
+  For i = 0 To 8
+    cpf[i] = Int(Rnd(0, 9))
+  Next
+  
+  cpf[9] = firstCheckDigit()
+  cpf[10] = secondCheckDigit()
+  
+  Return cpf.Join("")
+  
+End
+
+' Calculating the first check digit
+Public Function firstCheckDigit() As Integer
+  
+  Dim i, value As Integer
+  
+  value = 0
+  
+  For i = 0 To 8
+    value += cpf[i] * (10 - i)
+  Next
+  
+  If (value Mod 11) < 2 Then
+    Return 0
+  End If
+  
+  Return 11 - (value Mod 11)
+  
+End
+
+' Calculating the second check digit
+Public Function secondCheckDigit() As Integer
+  
+  Dim i, value As Integer
+  
+  value = 0
+  
+  For i = 1 To 8
+    value += cpf[i] * (11 - i)
+  Next
+  
+  value += firstCheckDigit() * 2
+  
+  If (value Mod 11) < 2 Then
+    Return 0
+  End If
+  
+  Return 11 - (value Mod 11)
+  
 End

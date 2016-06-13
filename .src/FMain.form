@@ -1,6 +1,32 @@
 # Gambas Form File 3.0
 
-{ FMain Form
-  MoveScaled(0,0,50,50)
+{ Form Form
+  MoveScaled(0,0,43.5,29.25)
+  Resizable = False
+  { picCpf PictureBox
+    MoveScaled(0,0,43.5,29.25)
+    Picture = Picture["cpf.jpg"]
+  }
+  { txtCpf TextBox
+    MoveScaled(9.75,12.625,24,4)
+    Font = Font["+2"]
+    Alignment = Align.Center
+    ReadOnly = True
+    MaxLength = 11
+  }
+  { btnGenerate Button
+    MoveScaled(21.875,17,11.875,4)
+    Text = ("Gerar")
+  }
+  { btnCopy Button
+    MoveScaled(9.75,17,11.875,4)
+    Enabled = False
+    Text = ("Copiar")
+  }
+  { lblDescription Label
+    MoveScaled(0.375,25.75,28,4)
+    Font = Font["Italic,-3"]
+    Foreground = &H002852&
+    Text = ("Gerador de CPF para fins de teste de software.")
+  }
 }
-
