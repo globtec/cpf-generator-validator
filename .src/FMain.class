@@ -12,10 +12,38 @@ Public Sub Form_Open()
   
 End
 
+Public Sub txtCpf_KeyRelease()
+
+  Dim i As Integer
+  
+  txtCpf.Foreground = &000000&
+  
+  btnCopy.Enabled = False
+  btnValidate.Enabled = False
+
+  If Not IsNumber(txtCpf.Text) Then
+    txtCpf.Clear
+  Endif
+  
+  If 11 = Len(txtCpf.Text) Then
+    
+    For i = 1 To 11
+      cpf[i - 1] = Mid(txtCpf.Text, i, 1)
+    Next
+    
+    btnValidate.Enabled = True
+    
+  Endif
+
+End
+
 ' Shows the generated cpf
 Public Sub btnGenerate_Click()
   
+  txtCpf.Foreground = &000000&
   txtCpf.Text = generate()
+  
+  btnValidate.Enabled = False
   
   If Not btnCopy.Enabled Then
     btnCopy.Enabled = True
@@ -27,6 +55,27 @@ End
 Public Sub btnCopy_Click()
   
   Clipboard.Copy(txtCpf.Text)
+  
+End
+
+' Check cpf
+Public Sub btnValidate_Click()
+
+  If cpf[9] = firstCheckDigit() And cpf[10] = secondCheckDigit() Then
+    txtCpf.Foreground = &H3F7F00&
+    btnCopy.Enabled = True
+  Else
+    txtCpf.Foreground = &HFF0000&
+    btnCopy.Enabled = False
+  Endif
+  
+  btnValidate.Enabled = False
+
+End
+
+Public Function validate() As Boolean
+  
+  Return cpf[9] = firstCheckDigit() And cpf[10] = secondCheckDigit()
   
 End
 
@@ -59,7 +108,7 @@ Public Function firstCheckDigit() As Integer
   
   If (value Mod 11) < 2 Then
     Return 0
-  End If
+  Endif
   
   Return 11 - (value Mod 11)
   
@@ -80,7 +129,7 @@ Public Function secondCheckDigit() As Integer
   
   If (value Mod 11) < 2 Then
     Return 0
-  End If
+  Endif
   
   Return 11 - (value Mod 11)
   
