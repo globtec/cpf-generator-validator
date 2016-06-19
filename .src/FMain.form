@@ -5,7 +5,7 @@
   Resizable = False
   { picCpf PictureBox
     MoveScaled(0,0,43.5,29.25)
-    Picture = Picture["Image/cpf.jpg"]
+    Picture = Picture["Images/cpf.jpg"]
   }
   { txtCpf TextBox
     MoveScaled(9.75,12.625,24,4)
@@ -14,11 +14,11 @@
     MaxLength = 11
   }
   { btnGenerate Button
-    MoveScaled(9.75,17,11.875,4)
+    MoveScaled(9.625,17,11.875,4)
     Text = ("Gerar")
   }
   { btnCopy Button
-    MoveScaled(9.75,21,11.875,4)
+    MoveScaled(9.625,21,11.875,4)
     Enabled = False
     Text = ("Copiar")
   }
