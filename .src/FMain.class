@@ -20,9 +20,14 @@ Public Sub txtCpf_KeyRelease()
   
   btnCopy.Enabled = False
   btnValidate.Enabled = False
+  btnClean.Enabled = False
 
   If Not IsNumber(txtCpf.Text) Then
     txtCpf.Clear
+  Endif
+  
+  If Len(txtCpf.Text) > 0 Then
+    btnClean.Enabled = True
   Endif
   
   If 11 = Len(txtCpf.Text) Then
@@ -44,6 +49,7 @@ Public Sub btnGenerate_Click()
   txtCpf.Text = generate()
   
   btnValidate.Enabled = False
+  btnClean.Enabled = True
   
   If Not btnCopy.Enabled Then
     btnCopy.Enabled = True
@@ -70,6 +76,13 @@ Public Sub btnValidate_Click()
   Endif
   
   btnValidate.Enabled = False
+
+End
+
+Public Sub btnClean_Click()
+
+  txtCpf.Clear
+  btnClean.Enabled = False
 
 End
 

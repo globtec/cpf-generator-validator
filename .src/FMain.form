@@ -5,7 +5,7 @@
   Resizable = False
   { picCpf PictureBox
     MoveScaled(0,0,43.5,29.25)
-    Picture = Picture["Images/cpf.jpg"]
+    Picture = Picture["Images/background.jpg"]
   }
   { txtCpf TextBox
     MoveScaled(9.75,12.625,24,4)
@@ -23,14 +23,19 @@
     Text = ("Copiar")
   }
   { lblDescription Label
-    MoveScaled(0.375,25.75,28,4)
+    MoveScaled(0.375,25.75,35,4)
     Font = Font["Italic,-3"]
     Foreground = &H002852&
-    Text = ("Gerador de CPF para fins de teste de software.")
+    Text = ("Gerador e validador de CPF para fins de teste de software.")
   }
   { btnValidate Button
     MoveScaled(22,17,12,4)
     Enabled = False
     Text = ("Validar")
+  }
+  { btnClean Button
+    MoveScaled(22,21,12,4)
+    Enabled = False
+    Text = ("Limpar")
   }
 }

@@ -1,8 +1,8 @@
 # Gambas Project File 3.0
 # Compiled with Gambas 3.5.4
-Title=Gerador de CPF
+Title=Gerador e validador de CPF
 Startup=FMain
-Icon=Image/icon.png
+Icon=Images/icon.png
 Version=0.0.1
 Component=gb.image
 Component=gb.gui
